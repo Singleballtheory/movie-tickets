@@ -56,3 +56,33 @@ Test: Return movie options based on other movie name
 Code: movieResult('Kiss from a Fist')
 Expected result: {name: 'Kiss from a Fist', rating: 'R', firstRelease: true, times: ['2:00pm', '8:00pm' ] }
 ```
+
+```
+Test: If somebody is over 18, they can see an R-rated movie
+Code: canSeeMovie('R', 19)
+Expected result: true
+```
+
+```
+Test: If somebody is 17, they cannot see an R-rated movie
+Code: canSeeMovie('R', 17)
+Expected result: false
+```
+
+```
+Test: Anyone can see a PG-13 movie
+Code: canSeeMovie('PG 13', 7)
+Expected result: true
+```
+
+```
+Test: Anyone can see a G movie
+Code: canSeeMovie('G', 3)
+Expected result: true
+```
+
+```
+Test: A 40-year old can be a PG-13 movie
+Code: canSeeMovie('PG-13', 40)
+Expected result: true
+```

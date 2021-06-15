@@ -62,6 +62,10 @@ function movieResult (movieName) {
   }
 }
 
+function canSeeMovie (rating, age) {
+  return age >= 18 || rating !== 'R'
+}
+
 function runTests () {
   console.log('When we create a ticket with name, time, and age, we get a Ticket with that data')
   console.log(new Ticket('Revenge', '12:00pm', 18))
@@ -78,6 +82,26 @@ function runTests () {
   console.log('Return movie options based on other movie name')
   console.log(movieResult('Kiss from a Fist'))
   console.log('Expected:', {name: 'Kiss from a Fist', rating: 'R', firstRelease: true, times: ['2:00pm', '8:00pm' ] })
+
+  console.log('If somebody is over 18, they can see an R-rated movie')
+  console.log(canSeeMovie('R', 19))
+  console.log('Expected:', true)
+
+  console.log('If somebody is over 17, they cannot see an R-rated movie')
+  console.log(canSeeMovie('R', 17))
+  console.log('Expected:', false)
+
+  console.log('Anyone can see a PG-13 movie')
+  console.log(canSeeMovie('PG 13', 7))
+  console.log('Expected:', true)
+
+  console.log('Anyone can see a G movie')
+  console.log(canSeeMovie('G', 3))
+  console.log('Expected:', true)
+
+  console.log('A 40-year old can be a PG-13 movie')
+  console.log(canSeeMovie('PG 13', 40))
+  console.log('Expected:', true)
 }
 
 runTests()
