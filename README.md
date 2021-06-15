@@ -2,6 +2,12 @@
 ### done list
 - we need to create a list of movies
 
+price changes
+  non-matinee: +3
+  first release: +3
+  age 55+: -4
+  age 11-: -2
+
 ### todo
 Webpage needs to house a list of movie titles
 
@@ -126,8 +132,19 @@ const ticket = { age: 40, time: '5:00pm' }
 Code: getTicketPrice(movie, ticket)
 Expected result: 11
 ```
-Test: When it is a new release and not matinee, price is 11 (add 6 to price)
+
+```
+Test: When buyer is 55, price is 7 (subtract 4 from price)
 const movie = { firstRelease: true }
-const ticket = { age: 40, time: '5:00pm' }
+const ticket = { age: 55, time: '5:00pm' }
 Code: getTicketPrice(movie, ticket)
-Expected result: 11
+Expected result: 7
+```
+
+```
+Test: When buyer is 11, price is 9 (subtract 2 from price)
+const movie = { firstRelease: true }
+const ticket = { age: 11, time: '5:00pm' }
+Code: getTicketPrice(movie, ticket)
+Expected result: 9
+```

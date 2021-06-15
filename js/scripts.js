@@ -82,6 +82,14 @@ function getTicketPrice (movie, ticket) {
     defaultPrice += 3
   }
 
+  if (ticket.age >= 55) {
+    defaultPrice -= 4
+  }
+
+  if (ticket.age <=11) {
+    defaultPrice -= 2
+  }
+
   return defaultPrice
 }
 
@@ -141,6 +149,16 @@ function runTests () {
   console.log('When it is a new release and not matinee, price is 11 (add 6 to price)')
   console.log(getTicketPrice({ firstRelease: true }, { age: 40, time: '5:00pm' }))
   console.log('Expected:', 11)
+
+  console.log('When buyer is 55, price is 7 (subtract 4 from price)')
+  console.log(getTicketPrice({ firstRelease: true }, { age: 55, time: '5:00pm' }))
+  console.log('Expected:', 7)
+
+  console.log('When buyer is 11, price is 9 (subtract 2 from price)')
+  console.log(getTicketPrice({ firstRelease: true }, { age: 11, time: '5:00pm' }))
+  console.log('Expected:', 9)
 }
+
+
 
 runTests()
