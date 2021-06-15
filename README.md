@@ -86,3 +86,27 @@ Test: A 40-year old can be a PG-13 movie
 Code: canSeeMovie('PG-13', 40)
 Expected result: true
 ```
+
+```
+Test: Between the ages of 12 and 54, not firstRelease, and before 2pm, price is 5
+const movie = { firstRelease: false }
+const ticket = { age: 40, time: '10:00am' }
+Code: getTicketPrice(movie, ticket)
+Expected result: 5
+```
+
+```
+Test: After 2pm, price is 8 (add 3 to price)
+const movie = { firstRelease: false }
+const ticket = { age: 40, time: '3:00pm' }
+Code: getTicketPrice(movie, ticket)
+Expected result: 8
+```
+
+```
+Test: After 1pm, price is still 5
+const movie = { firstRelease: false }
+const ticket = { age: 40, time: '1:00pm' }
+Code: getTicketPrice(movie, ticket)
+Expected result: 5
+```

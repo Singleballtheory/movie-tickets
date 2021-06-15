@@ -66,6 +66,21 @@ function canSeeMovie (rating, age) {
   return age >= 18 || rating !== 'R'
 }
 
+function getTicketPrice (movie, ticket) {
+  let defaultPrice = 5
+
+  let time = ticket.time
+
+  let colonIndex = time.indexOf(':')
+  let hours = time.slice(0, colonIndex)
+
+  if (hours >= 2 && time.endsWith('pm')) {
+    defaultPrice += 3
+  }
+
+  return defaultPrice
+}
+
 function runTests () {
   console.log('When we create a ticket with name, time, and age, we get a Ticket with that data')
   console.log(new Ticket('Revenge', '12:00pm', 18))
@@ -102,6 +117,18 @@ function runTests () {
   console.log('A 40-year old can be a PG-13 movie')
   console.log(canSeeMovie('PG 13', 40))
   console.log('Expected:', true)
+
+  console.log('Between the ages of 12 and 54, not firstRelease, and before 2pm, price is 5')
+  console.log(getTicketPrice({ firstRelease: false }, { age: 40, time: '10:00am' }))
+  console.log('Expected:', 5)
+
+  console.log('After 2pm, price is 8 (add 3 to price)')
+  console.log(getTicketPrice({ firstRelease: false }, { age: 40, time: '3:00pm' }))
+  console.log('Expected:', 8)
+
+  console.log('After 1pm, price is still 5')
+  console.log(getTicketPrice({ firstRelease: false }, { age: 40, time: '1:00pm' }))
+  console.log('Expected:', 5)
 }
 
 runTests()
