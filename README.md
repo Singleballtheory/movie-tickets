@@ -31,3 +31,28 @@ Need to figure out stuff for ticket
 - check age
   - if age is too low for movie, tell them they can't watch
   - otherwise, show price based on input
+
+
+```
+Test: When we create a ticket with name, time, and age, we get a Ticket with that data
+Code: new Ticket('Revenge', '12:00pm', 18)
+Expected result: Ticket {name: "Revenge", time: "12:00pm", age: 18}
+```
+
+```
+Test: Create an alternate ticket with different name, time, age to get a ticket with that data
+Code: new Ticket("Race", "5:00pm", 34)
+Expected result: Ticket {name: "Race", time: "5:00pm", age: 34}
+```
+
+```
+Test: Return movie options based upon movie name
+Code: movieResult('Revenge of the Harps')
+Expected result: {name: "Revenge of the Harps", rating: "PG 13", firstRelease: true, times: ['5:00am', '5:00pm']}
+```
+
+```
+Test: Return movie options based on other movie name
+Code: movieResult('Kiss from a Fist')
+Expected result: {name: 'Kiss from a Fist', rating: 'R', firstRelease: true, times: ['2:00pm', '8:00pm' ] }
+```
