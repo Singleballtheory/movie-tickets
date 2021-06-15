@@ -110,3 +110,24 @@ const ticket = { age: 40, time: '1:00pm' }
 Code: getTicketPrice(movie, ticket)
 Expected result: 5
 ```
+
+```
+Test: When it is a new release, price is 8 (add 3 to price)
+const movie = { firstRelease: true }
+const ticket = { age: 40, time: '10:00am' }
+Code: getTicketPrice(movie, ticket)
+Expected result: 8
+```
+
+```
+Test: When it is a new release and not matinee, price is 11 (add 6 to price)
+const movie = { firstRelease: true }
+const ticket = { age: 40, time: '5:00pm' }
+Code: getTicketPrice(movie, ticket)
+Expected result: 11
+```
+Test: When it is a new release and not matinee, price is 11 (add 6 to price)
+const movie = { firstRelease: true }
+const ticket = { age: 40, time: '5:00pm' }
+Code: getTicketPrice(movie, ticket)
+Expected result: 11

@@ -78,6 +78,10 @@ function getTicketPrice (movie, ticket) {
     defaultPrice += 3
   }
 
+  if (movie.firstRelease) {
+    defaultPrice += 3
+  }
+
   return defaultPrice
 }
 
@@ -129,6 +133,14 @@ function runTests () {
   console.log('After 1pm, price is still 5')
   console.log(getTicketPrice({ firstRelease: false }, { age: 40, time: '1:00pm' }))
   console.log('Expected:', 5)
+
+  console.log('When it is a new release, price is 8 (add 3 to price)')
+  console.log(getTicketPrice({ firstRelease: true }, { age: 40, time: '1:00pm' }))
+  console.log('Expected:', 8)
+
+  console.log('When it is a new release and not matinee, price is 11 (add 6 to price)')
+  console.log(getTicketPrice({ firstRelease: true }, { age: 40, time: '5:00pm' }))
+  console.log('Expected:', 11)
 }
 
 runTests()
